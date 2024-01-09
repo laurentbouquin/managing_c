@@ -184,7 +184,7 @@ void seeContact(Contact contacts[], int *numContacts)
         int foundIndex = -1;
 
         // Search for the contact by name
-        for (int i = 0; i < numContacts; i++)
+        for (int i = 0; i < *numContacts; i++)
         {
             if (strcmp(contacts[i].name, searchName) == 0)
             {
