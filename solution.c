@@ -17,6 +17,7 @@ typedef struct
 void addContact(Contact contacts[], int *numContacts);
 void deleteContact(Contact contacts[], int *numContacts);
 void modifyContact(Contact contacts[], int numContacts);
+void seeContact(Contact contacts[], int *numContacts);
 
 int main()
 {
@@ -31,7 +32,8 @@ int main()
         printf("1. Add Contact\n");
         printf("2. Delete Contact\n");
         printf("3. Modify Contact\n");
-        printf("4. Exit\n");
+        printf("4. See Contact\n");
+        printf("5. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
@@ -48,13 +50,16 @@ int main()
             modifyContact(contacts, numContacts);
             break;
         case 4:
+            seeContact(contacts, &numContacts);
+            break;
+        case 5:
             printf("Exiting the program. Goodbye!\n");
             break;
         default:
             printf("Invalid choice. Please enter a valid option.\n");
         }
 
-    } while (choice != 4);
+    } while (choice != 5);
 
     return 0;
 }
