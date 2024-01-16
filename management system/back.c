@@ -6,7 +6,7 @@
 
 int main()
 {
-	read_file("./data/report3", 3);
+	read_file_line("./data/report1", 1);
 	
 	return 0;
 }
@@ -81,10 +81,10 @@ void *search_file(char *path, char *file_name)
 	}
 }
 
-void *read_file(char *file_directory, int line_number)
+void *read_file(char *file_directory)
 {
 	FILE *fp;
-    fp = fopen(file_directory, "r");
+	fp = fopen(file_directory, "r");
 	
 	if (fp == NULL)
 	{
@@ -94,18 +94,57 @@ void *read_file(char *file_directory, int line_number)
 	else
 	{
 		char ch;
-		char output;
+		char output[1000];
 		int line = 1;
-		while ((ch = fgetc(fp)) != EOF)
-		{
-			if (line == line_number){
-				printf("%s", ch);
-				output = ch;
+		while ((ch = fgetc(fp)) != EOF){
+			if (ch != '\n'){
+				strncat(output, &ch, 1);
 			}
-			line++;
+			else if (ch == '\n' && line != 4){
+				output[0] = '\0';
+				line++;
+			}
+			else if (ch == '\n' && line == 4){
+				printf("%s\n", output);
+				line++;
+				break;
+			}
 		}
 		fclose(fp);
-		return output;
+	}
+}
+
+void *read_file_line(char *file_directory, int fileLine)
+{
+	
+	FILE *fp;
+	fp = fopen(file_directory, "r");
+	
+	if (fp == NULL)
+	{
+		printf("File does not exist.\n");
+		return NULL;
+	}
+	else
+	{
+		char ch;
+		char output[1000];
+		int line = 1;
+		while ((ch = fgetc(fp)) != EOF){
+			if (ch != '\n'){
+				strncat(output, &ch, 1);
+			}
+			else if (ch == '\n' && line != fileLine){
+				output[0] = '\0';
+				line++;
+			}
+			else if (ch == '\n' && line == fileLine){
+				printf("%s\n", output);
+				line++;
+				break;
+			}
+		}
+		fclose(fp);
 	}
 }
 
