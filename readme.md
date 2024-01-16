@@ -49,24 +49,6 @@ typedef struct {
 
 The frontend system should allow users to see inventory with all information that we get.
 
-### Inventory Data Structure
-
-The `inventory` data structure represents an individual object with the following information:
-
-- **Product ID** : The first name of the contact.
-- **Name** : The last name or surname of the contact.
-- **Quantity** : The age of the contact.
-- **Price** : The country where the contact resides.
-
-```c
-typedef struct {
-    int productID;
-    char name[50];
-    int quantity;
-    int price;
-} Inventory;
-```
-
 ## Backend : File Management System Solution
 
 ### What it does?
