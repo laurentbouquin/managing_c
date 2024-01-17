@@ -14,4 +14,4 @@ void *read_file(char *file_directory);
 
 void *read_file_line(char *file_directory, int fileLine);
 
-void write_file(char *path);
+void write_file(char *path, char *file_name, char *content);

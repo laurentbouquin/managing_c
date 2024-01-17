@@ -6,15 +6,22 @@
 
 int main()
 {
-	read_file_line("./data/report1", 1);
+	// write_file("./data", "report6","This is a second test");
+	// read_file("./data/report6");
+	// read_file_line("./data/report6", 2);
+	// delete_file("./data", "report6");
+	// create_file("./data", "report6");
+
+
+	// get_files("./data");
 	
 	return 0;
 }
-/*
+
 char **get_files(char *directory)
 {
     char command [512];
-    sprintf(command, "ls %s", directory);
+    sprintf(command, "cmd %s", directory);
 
     FILE *fp = popen (command, "r");
     if (fp == NULL) {
@@ -25,11 +32,12 @@ char **get_files(char *directory)
     char **file_list = malloc(100 * sizeof(char *));
     char buffer[256];
     int i = 0;
-    while (fget(buffer, sizeof(buffer), fp) !=NULL && i < 100){
-        buffer[strcspn(buffer, "\n")] = 0; 
-        file_list[i] = strdup(buffer);
-        i++;
-    }
+	fgetc(fp);
+    // while (fgetc(buffer, sizeof(buffer), fp) !=NULL && i < 100){
+    //     buffer[strcspn(buffer, "\n")] = 0; 
+    //     file_list[i] = strdup(buffer);
+    //     i++;
+    // }
     file_list[i] = NULL; 
 
     
@@ -37,7 +45,7 @@ char **get_files(char *directory)
 
     return file_list;
 }
-*/
+
 void create_file(char *path, char *file_name)
 {
     char full_path[256];
@@ -148,20 +156,24 @@ void *read_file_line(char *file_directory, int fileLine)
 	}
 }
 
-void write_file(char *path)
+void write_file(char *path, char *file_name, char *content)
 {
-	char data[] = "This is  test";
 	FILE *fptr;
 
+    char full_path[256];
+    strcpy(full_path, path);
+    strcat(full_path, "/");
+    strcat(full_path, file_name);
+
     /* open for writing */
-    fptr = fopen(path, "w"); 
+    fptr = fopen(full_path, "w"); 
 
     if (fptr == NULL)
     {
         printf("File does not exist.\n");
         return;
     }
-    fprintf(fptr, "%s\n", data);
+    fprintf(fptr, "%s\n", content);
 
     fclose(fptr);
 }
