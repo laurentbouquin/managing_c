@@ -4,20 +4,6 @@
 
 #include "back.h"
 
-int main()
-{
-	// write_file("./data", "report6","This is a second test");
-	// read_file("./data/report6");
-	// read_file_line("./data/report6", 2);
-	// delete_file("./data", "report6");
-	// create_file("./data", "report6");
-
-
-	// get_files("./data");
-	
-	return 0;
-}
-
 char **get_files(char *directory)
 {
     char command [512];
