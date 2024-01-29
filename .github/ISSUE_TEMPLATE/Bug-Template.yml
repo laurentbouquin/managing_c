@@ -37,3 +37,16 @@ body:
       label: Relevant log output
       description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
       render: shell
+  - type: dropdown
+    id: importance
+    attributes:
+      label: priority
+      description: Which priority is the typo?
+      options:
+        - Optional
+        - Can wait
+        - Should be done quickly
+        - Urgent
+      default: 0
+    validations:
+      required: true
